@@ -43,75 +43,34 @@ function NavBar({children}) {
 
    return (
     <div>
-    <nav className='flex w-full items-center justify-between px[20px] py-[16px] px-[16px] lg:mx-auto '>
-       <div className='flex '>
-          <RxSketchLogo alt="logo" size={32}/>
-
-          <div className='hidden lg:flex pl-[74px] gap-x-[56px]'>
-             {navLinks.map((items, index) => (
-              <Link href={items.links} key={index}>
-               <p className='text=[#36485C] font-medium'>
-                  {items.name}
-               </p>
-              </Link>
-             ))}
-          </div>
-       </div>
-       <div className='flex gap-x-5'>
-         <button  onClick={() => console.log("Open an Account")} >
-            <p className='hidden lg:block font-medium text=[#36485C] pr-[56px]'>Open an Account</p>
-         </button>
-
-         <button  onClick={() => console.log("Go Sign In")} >
-          <div className='flex items-center gap-x-2'>
-             <RxPerson alt="user Profile" size={24}/>
-             <span className='hidden font-medium text-[#36485C] lg:block'>Sign In</span>
-          </div>
-          </button>
-
-          <button
-            className="z-50 flex flex-col lg:hidden h-8 justify-center items-center group"
-            onClick={() => setIsOpen(!isOpen)}
+    <nav className=' border-b-4 border-gray-200 shadow-md  flex w-full items-center justify-between  py-[15px] px-[53px] lg:mx-auto '>
+      <div className="self-stretch my-auto text-2xl font-black text-zinc-900">
+        Vieo
+      </div>
+      <div className="flex gap-5 justify-between self-stretch my-auto font-bold text-zinc-900">
+        <div>Pricing</div>
+        <div>Use Cases</div>
+        <div>Docs</div>
+      </div>
+      <div className="flex gap-5 justify-between self-stretch pl-5 whitespace-nowrap">
+        <button
+            className="z-50 flex flex-col   h-8 justify-center items-center group"
+            onClick={()=>  console.log("GET LOGIN")}
             >
-                  <div
-                        className={`${genericHamburgerLine} ${
-                           isOpen
-                              ? "rotate-45 translate-y-3 opacity-50 group-hover:opacity-100  bg-white"
-                              : "opacity-50 group-hover:opacity-100"
-                        }`}
-                  />
-                  <div className={`${genericHamburgerLine} ${isOpen ? "opacity-0 " : "opacity-50 group-hover:opacity-100"}`} />
-                  <div
-                     className={`${genericHamburgerLine} ${
-                        isOpen
-                           ? "-rotate-45 -translate-y-3 opacity-50 group-hover:opacity-100 bg-white"
-                           : "opacity-50 group-hover:opacity-100"
-                     }`}
-                     />
-          </button>
-       </div>
+        <div className="my-auto font-medium text-zinc-900">Login</div>
+        </button>
+
+        <button
+            className="z-50 flex flex-col  h-8 justify-center items-center group"
+            onClick={()=>  console.log("GET STARTED")}
+            >
+        <div className="justify-center px-5 py-2 font-bold text-white rounded-md bg-zinc-900">
+          Get Started
+        </div>
+        </button>
+      </div>
     </nav>
-    {
-      isOpen &&(
-         <motion.div
-            variants={listVariants}
-            initial="closed"
-            animate="opened"
-            className="lg:hidden opacity-90 absolute top-0 left-0 w-screen h-screen  bg-black text-white flex flex-col items-center justify-center gap-8 text-4xl z-40"
-          >
-            {navLinks.map((item, index) => (
-              <motion.div
-                variants={listItemVariants}
-                className=""
-                key={index}
-              >
-                <Link href={item.links}>{item.name}</Link>
-              </motion.div>
-            ))}
-          </motion.div>
-            
-      )
-    }
+   
    
     <main className='w-full'>{children}</main>
     </div>
